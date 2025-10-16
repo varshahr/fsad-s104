@@ -1,16 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import { render, screen } from '@testing-library/react';
+import App from './App'; // correct import for default export
 
-function App() {
-  return (
-    <div>
-      <h1 align ="center"> This is Git deployment test
-      </h1>
-    
-    
-    </div>
-   
-  );
-}
-
-export default App;
+test('renders Git deployment message', () => {
+  render(<App />);
+  const headingElement = screen.getByText(/This is Git deployment test/i);
+  expect(headingElement).toBeInTheDocument();
+});
